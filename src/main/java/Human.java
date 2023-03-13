@@ -1,5 +1,5 @@
-public class Human {
-    private  int id;
+public class Human implements Comparable<Human> {
+    private int id;
     private String firstName;
     private String lastName;
     private String city;
@@ -27,6 +27,10 @@ public class Human {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getFullName() {
+        return lastName + " " + firstName;
     }
 
     public String getLastName() {
@@ -80,5 +84,12 @@ public class Human {
                 ", age=" + age +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Human o) {
+        String mFullname = lastName + " " + firstName;
+        String oFullname = o.lastName + " " + o.firstName;
+        return mFullname.compareTo(oFullname);
     }
 }
